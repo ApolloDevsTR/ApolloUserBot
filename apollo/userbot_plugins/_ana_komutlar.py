@@ -3,7 +3,10 @@ from apollo.lib.eklentiler import userbot_eklentileri, bot_eklentileri
 from apollo.lib.helpers import kullanici, yanitlanan_mesaj, pyro_hata
 from apollo.lib.CmdHelp import CmdHelp
 from pyrogram import Client, filters
+from apollo import UserBot, Bot
 from pathlib import Path
+import re
+import importlib
 from pyrogram.types import Message
 from time import time
 import asyncio
@@ -154,15 +157,24 @@ async def userbot_eklenti_al(client:Client, message:Message):
             await ilk_mesaj.edit(f"`{cevaplanan_mesaj.document.file_name}` __eklentisi zaten mevcut!__")
             return
 
-        try:
-            await client.download_media(message=cevaplanan_mesaj, file_name=eklenti_dizini)
-            await asyncio.sleep(2)
-            await ilk_mesaj.edit(f"**Eklenti Yüklendi:** `{cevaplanan_mesaj.document.file_name}`")
-            return
 
-        except Exception as hata:
-            await pyro_hata(hata, ilk_mesaj)
-            return
+        await client.download_media(message=cevaplanan_mesaj, file_name=eklenti_dizini)
+        f = open(eklenti_dizini, "r")
+        groups = []
+        for line in f:
+            matches = re.match("^async def ([a-zA-Z0-9_]*)\(", line)
+            if matches:
+                groups.append(matches.group(1))
+        for func in groups:
+            mymodule = importlib.import_module(f"apollo.userbot_plugins.{cevaplanan_mesaj.document.file_name.split('.')[0]}")
+            myfunc = getattr(mymodule, func)
+            handlers = myfunc.handlers
+            for handler in handlers:
+                UserBot.add_handler(*handler)
+        await asyncio.sleep(2)
+        await ilk_mesaj.edit(f"**Eklenti Yüklendi:** `{cevaplanan_mesaj.document.file_name}`")
+        return
+
 
     await ilk_mesaj.edit('__Python betiği yanıtlamanız gerekmektedir__')
 
@@ -185,6 +197,18 @@ async def bot_eklenti_al(client:Client, message:Message):
 
         try:
             await client.download_media(message=cevaplanan_mesaj, file_name=eklenti_dizini)
+            f = open(eklenti_dizini, "r")
+            groups = []
+            for line in f:
+                matches = re.match("^async def ([a-zA-Z0-9_]*)\(", line)
+                if matches:
+                    groups.append(matches.group(1))
+            for func in groups:
+                mymodule = importlib.import_module(f"apollo.bot_plugins.{cevaplanan_mesaj.document.file_name.split('.')[0]}")
+                myfunc = getattr(mymodule, func)
+                handlers = myfunc.handlers
+                for handler in handlers:
+                    Bot.add_handler(*handler)
             await asyncio.sleep(2)
             await ilk_mesaj.edit(f"**Eklenti Yüklendi:** `{cevaplanan_mesaj.document.file_name}`")
             return
@@ -204,6 +228,18 @@ async def userbot_eklenti_sil(client:Client, message:Message):
         eklenti_dizini = f"./apollo/userbot_plugins/{message.command[1]}.py"
 
         if os.path.exists(eklenti_dizini):
+            f = open(eklenti_dizini, "r")
+            groups = []
+            for line in f:
+                matches = re.match("^async def ([a-zA-Z0-9_]*)\(", line)
+                if matches:
+                    groups.append(matches.group(1))
+            for func in groups:
+                mymodule = importlib.import_module(f"apollo.userbot_plugins.{message.command[1].split('.')[0]}")
+                myfunc = getattr(mymodule, func)
+                handlers = myfunc.handlers
+                for handler in handlers:
+                    UserBot.remove_handler(*handler)
             os.remove(eklenti_dizini)
             await asyncio.sleep(2)
             await ilk_mesaj.edit(f"**Userbot'tan eklenti silindi:** `{message.command[1]}`")
@@ -223,6 +259,18 @@ async def bot_eklenti_sil(client:Client, message:Message):
         eklenti_dizini = f"./apollo/bot_plugins/{message.command[1]}.py"
 
         if os.path.exists(eklenti_dizini):
+            f = open(eklenti_dizini, "r")
+            groups = []
+            for line in f:
+                matches = re.match("^async def ([a-zA-Z0-9_]*)\(", line)
+                if matches:
+                    groups.append(matches.group(1))
+            for func in groups:
+                mymodule = importlib.import_module(f"apollo.bot_plugins.{message.command[1].split('.')[0]}")
+                myfunc = getattr(mymodule, func)
+                handlers = myfunc.handlers
+                for handler in handlers:
+                    Bot.remove_handler(*handler)
             os.remove(eklenti_dizini)
             await asyncio.sleep(2)
             await ilk_mesaj.edit(f"**Asistan'dan eklenti silindi:** `{message.command[1]}`")
