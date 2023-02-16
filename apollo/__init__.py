@@ -74,7 +74,7 @@ def start():
     try:
         Bot.start()
     except FloodWait:
-        logging.error("Asistan FloodWait yemiş, devre dışı bırakılıyor bazı özellikler çalışmayabilir!")
+        logging.warning("Asistan FloodWait yemiş, devre dışı bırakılıyor bazı özellikler çalışmayabilir!")
         NO_ASISTAN = True
     toplam_plugin_sayisi = len(userbot_eklentileri(True)) + len(bot_eklentileri(True))
     logging.info(f"ApolloUserBot 🚀 Python {PYTHON_VER} sürümünde Pyrogram {PYRO_VER} tabanında toplam {toplam_plugin_sayisi} eklentiyle çalışıyor...\n")
