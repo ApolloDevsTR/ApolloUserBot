@@ -16,6 +16,7 @@ logging.basicConfig(level=logging.INFO)
 
 PYTHON_VER = f"{str(sys.version_info[0])}.{str(sys.version_info[1])}"
 VERSION = "beta"
+REPO_URL = "https://github.com/ApolloDevsTR/ApolloUserBot"
 
 DOTENV = True # for local hosting
 if DOTENV:
