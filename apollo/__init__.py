@@ -18,14 +18,7 @@ PYTHON_VER = f"{str(sys.version_info[0])}.{str(sys.version_info[1])}"
 VERSION = "beta"
 REPO_URL = "https://github.com/ApolloDevsTR/ApolloUserBot"
 
-DOTENV = True # for local hosting
-if DOTENV:
-    load_dotenv("ayar.env")
-
-AYAR_KONTROL = os.environ.get("___LUTFEN___BU___SATIRI___SILIN___", None)
-if AYAR_KONTROL:
-    logging.error("\n\tLütfen ayar.env dosyanızı düzenlediğinize emin olun /veya\n\tilk hashtag'de belirtilen satırı kaldırın..\n")
-    quit(1)
+load_dotenv()
 
 API_ID          = str(os.environ.get("API_ID", str))
 API_HASH        = str(os.environ.get("API_HASH", str))
@@ -38,7 +31,7 @@ NO_ASISTAN = False
 if not os.path.isdir(DOWNLOADS_DIR): os.makedirs(DOWNLOADS_DIR)
 
 if STRING_SESSION.startswith('-') or len(STRING_SESSION) < 351:
-    logging.error("\n\tString session hatalı..!\n")
+    logging.error("String session hatalı..!")
     quit(1)
 
 logging.info('Apollo Userbot Başlatılıyor ...')
@@ -63,7 +56,7 @@ try:
     )
 
 except ValueError:
-    logging.error("\n\tLütfen ayar.env dosyanızı DÜZGÜNCE! oluşturun..\n")
+    logging.error("Lütfen ayarları düzgünce yapın!")
     quit(1)
 
 CMD_HELP = {}
