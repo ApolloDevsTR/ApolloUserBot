@@ -28,7 +28,7 @@ async def selamunaleykum(client: Client, message: Message):
 
     for msg in sa_list:
         await message.edit(msg)
-        sleep(DELAY)
+        await sleep(DELAY)
 
 
 @Client.on_message(filters.regex("^As$") & filters.outgoing)
@@ -52,7 +52,7 @@ async def aleykumselam(client: Client, message: Message):
 
     for msg in as_list:
         await message.edit(msg)
-        sleep(DELAY)
+        await sleep(DELAY)
 
 myCmdHelp = CmdHelp(Path(__file__).stem)
 

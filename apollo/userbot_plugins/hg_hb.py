@@ -23,7 +23,7 @@ async def hosgeldin(client: Client, message: Message):
 
     for msg in hg_list:
         await message.edit(msg)
-        sleep(DELAY)
+        await sleep(DELAY)
 
 
 @Client.on_message(filters.regex("^Hb$") & filters.outgoing)
@@ -42,7 +42,7 @@ async def hosbuldum(client: Client, message: Message):
 
     for msg in hb_list:
         await message.edit(msg)
-        sleep(DELAY)
+        await sleep(DELAY)
 
 myCmdHelp = CmdHelp(Path(__file__).stem)
 
