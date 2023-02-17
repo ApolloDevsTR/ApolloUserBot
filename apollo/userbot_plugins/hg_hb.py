@@ -4,7 +4,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from asyncio import sleep
 
-DELAY = 0.6
+DELAY = 0.75
 
 
 @Client.on_message(filters.regex("^Hg$") & filters.outgoing)
