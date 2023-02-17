@@ -44,6 +44,8 @@ try:
         session_string  = STRING_SESSION,
         in_memory       = True,
         plugins         = dict(root="apollo/userbot_plugins"),
+        app_version     = f"Versiyon: {VERSION}",
+        device_model    = "Apollo UserBot"
     )
 
     Bot = Client(
