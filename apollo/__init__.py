@@ -24,7 +24,7 @@ API_ID          = str(os.environ.get("API_ID", str))
 API_HASH        = str(os.environ.get("API_HASH", str))
 STRING_SESSION  = os.environ.get("STRING_SESSION", str)
 BOT_TOKEN       = os.environ.get("BOT_TOKEN", str)
-PREFIX          = os.environ.get("PREFIX", str)
+PREFIX          = os.environ.get("PREFIX", ".")
 DOWNLOADS_DIR   = os.environ.get("DOWNLOADS_DIR", "downloads/")
 NO_ASISTAN = False
 
