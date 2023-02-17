@@ -5,7 +5,7 @@
 <p align="center">
     Apollo UserBot, Telegramı daha kolay ve eğlenceli yapan bir bottur. 
     <br>
-        <a href="https://github.com/ThorDevTR/ThorUserBot/blob/master/README.md#Kurulum">| Kurulum</a> |
+        | <a href="https://github.com/ThorDevTR/ThorUserBot/blob/master/README.md#Kurulum">Kurulum</a> |
         <a href="https://t.me/ApolloUB">Kanal </a> |
         <a href="https://t.me/ApolloUBSupport">Destek</a> |
         <a href="https://t.me/ApolloUBPlugin">Eklenti</a> |
