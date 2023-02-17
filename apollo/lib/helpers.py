@@ -39,4 +39,4 @@ async def kullanici_foto(client:Client, message:Message) -> Any:
         return None
 
 async def pyro_hata(hata:Exception, mesaj:Message) -> None:
-    await mesaj.edit(f'**Bir Hata Oluştu ⚠️**\n\n__{type(hata).__name__}__:\n```{hata}```\n\n**Lütfen bu mesajı @ApolloUBSupport grubuna yönlendirin.**')
+    await mesaj.edit(f'**Bir Hata Oluştu ⚠️**\n\n__{type(hata).__name__}__:\n```str({hata})```\n\n**Lütfen bu mesajı @ApolloUBSupport grubuna yönlendirin.**')
