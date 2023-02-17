@@ -2,9 +2,9 @@ from apollo.lib.CmdHelp import CmdHelp
 from pathlib import Path
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from asyncio import sleep
+from time import sleep
 
-DELAY = 0.75
+DELAY = 0.6
 
 
 @Client.on_message(filters.regex("^Sa$") & filters.outgoing)

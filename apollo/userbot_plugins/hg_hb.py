@@ -2,9 +2,9 @@ from apollo.lib.CmdHelp import CmdHelp
 from pathlib import Path
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from asyncio import sleep
+from time import sleep
 
-DELAY = 0.75
+DELAY = 0.6
 
 
 @Client.on_message(filters.regex("^Hg$") & filters.outgoing)
@@ -23,7 +23,7 @@ async def hosgeldin(client: Client, message: Message):
 
     for msg in hg_list:
         await message.edit(msg)
-        await sleep(DELAY)
+        sleep(DELAY)
 
 
 @Client.on_message(filters.regex("^Hb$") & filters.outgoing)
@@ -42,7 +42,7 @@ async def hosbuldum(client: Client, message: Message):
 
     for msg in hb_list:
         await message.edit(msg)
-        await sleep(DELAY)
+        sleep(DELAY)
 
 myCmdHelp = CmdHelp(Path(__file__).stem)
 
