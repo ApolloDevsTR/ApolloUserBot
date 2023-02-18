@@ -27,7 +27,7 @@ class CmdHelp:
             self.FILE_AUTHOR = value
         return self
         
-    def add_command(self, command : str, params = None, usage: str = '', example = None, is_cmd = True):
+    def add_command(self, command : str, params: str = None, usage: str = '', example: str = None, is_cmd: bool = True):
         """
         Komut ekler.
         """
@@ -35,11 +35,11 @@ class CmdHelp:
         self.COMMANDS[command] = {'command': command, 'params': params, 'usage': usage, 'example': example, 'is_cmd': is_cmd}
         return self
     
-    def add_warning(self, warning):
+    def add_warning(self, warning: str):
         self.WARNING = warning
         return self
     
-    def add_info(self, info):
+    def add_info(self, info: str):
         self.INFO = info
         return self
 

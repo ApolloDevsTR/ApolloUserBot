@@ -11,6 +11,7 @@ from pyrogram.types import Message
 from time import time
 import asyncio
 import os
+import sys
 
 
 @Client.on_message(filters.command(['help', 'yardim'], PREFIX) & filters.me)
@@ -333,43 +334,59 @@ async def send_env(client: Client, message: Message):
 
     await ilk_mesaj.edit(f"**{kullanici_adi} !**\n\n**Ayar bilgilerini kaydettim..**\n\n__Kayıtlı Mesajlarına Bakabilirsin..__")
 
+
+@Client.on_message(filters.command(['restart'], PREFIX) & filters.me)
+async def restart(client: Client, message: Message):
+    await message.edit("𝘼𝙥𝙤𝙡𝙡𝙤 𝙐𝙨𝙚𝙧𝘽𝙤𝙩 🚀 `Yeniden Başlatılıyor...`")
+    try:
+        await UserBot.disconnect()
+        await Bot.disconnect()
+    except:
+        pass
+    args = ["-m", "apollo"]
+    os.execl(sys.executable, sys.executable, *args)
+    return
+
 myCmdHelp = CmdHelp(Path(__file__).stem)
 
 myCmdHelp.add_command(
-    "alive", None, "Bot yaşıyor mu ona bakar.").add_userbot()
+    "alive", None, "Bot yaşıyor mu ona bakar.")
 myCmdHelp.add_command("env", None,
-                      "Size yeni bir Apollo Userbot kurmanız için gereken bilgileri verir.").add_userbot()
+                      "Size yeni bir Apollo Userbot kurmanız için gereken bilgileri verir.")
 myCmdHelp.add_command("apollo", "EklentiAdi",
-                      ".uapollo komutunun kısayoludur.", ".apollo sa_as").add_userbot()
+                      ".uapollo komutunun kısayoludur.", ".apollo sa_as")
 myCmdHelp.add_command("uapollo", "EklentiAdi",
-                      "Apollo Userbot'un eklentileri hakkında bilgi öğrenmenizi sağlar.", ".uapollo sa_as").add_userbot()
+                      "Apollo Userbot'un eklentileri hakkında bilgi öğrenmenizi sağlar.", ".uapollo sa_as")
 myCmdHelp.add_command("bapollo", "EklentiAdi",
-                      "Apollo Asistan'ın eklentileri hakkında bilgi öğrenmenizi sağlar.", ".bapollo sa_as").add_userbot()
+                      "Apollo Asistan'ın eklentileri hakkında bilgi öğrenmenizi sağlar.", ".bapollo sa_as")
 myCmdHelp.add_command("ulist", None,
-                      ".ulist komutunun kısayoludur.").add_userbot()
+                      ".ulist komutunun kısayoludur.")
 myCmdHelp.add_command("plist", None,
-                      "Apollo Userbot'un eklentilerini listeler.").add_userbot()
+                      "Apollo Userbot'un eklentilerini listeler.")
 myCmdHelp.add_command("blist", None,
-                      "Apollo Asistan'ın eklentilerini listeler.").add_userbot()
+                      "Apollo Asistan'ın eklentilerini listeler.")
 myCmdHelp.add_command("uget", "EklentiAdi",
-                      "Apollo Userbot için yüklenmiş olan bir eklentinin kaynak kodunu getirir.", ".uget sa_as").add_userbot()
+                      "Apollo Userbot için yüklenmiş olan bir eklentinin kaynak kodunu getirir.", ".uget sa_as")
 myCmdHelp.add_command("pget", "EklentiAdi",
-                      ".uget komutunun kısayoludur.", ".pget sa_as").add_userbot()
+                      ".uget komutunun kısayoludur.", ".pget sa_as")
 myCmdHelp.add_command("bget", "EklentiAdi",
-                      "Apollo Asistan için yüklenmiş olan bir eklentinin kaynak kodunu getirir.", ".bget google").add_userbot()
+                      "Apollo Asistan için yüklenmiş olan bir eklentinin kaynak kodunu getirir.", ".bget google")
 myCmdHelp.add_command("uinstall", None,
-                      "Apollo Userbot için geliştirilmiş olan bir eklentiyi yanıtlayarak kurmanızı sağlar.").add_userbot()
+                      "Apollo Userbot için geliştirilmiş olan bir eklentiyi yanıtlayarak kurmanızı sağlar.")
 myCmdHelp.add_command("pinstall", None,
-                      ".uinstall komutunun kısayoludur.").add_userbot()
+                      ".uinstall komutunun kısayoludur.")
 myCmdHelp.add_command("binstall", None,
-                      "Apollo Asistan için geliştirilmiş olan bir eklentiyi yanıtlayarak kurmanızı sağlar.").add_userbot()
+                      "Apollo Asistan için geliştirilmiş olan bir eklentiyi yanıtlayarak kurmanızı sağlar.")
 myCmdHelp.add_command("udel", "EklentiAdi",
-                      "Apollo Userbot için yüklenmiş olan bir eklentiyi silmenizi sağlar.", ".udel foobar").add_userbot()
+                      "Apollo Userbot için yüklenmiş olan bir eklentiyi silmenizi sağlar.", ".udel foobar")
 myCmdHelp.add_command("pdel", "EklentiAdi",
-                      ".udel komutunun kısayoludur.", ".pdel foobar").add_userbot()
+                      ".udel komutunun kısayoludur.", ".pdel foobar")
 myCmdHelp.add_command("bdel", "EklentiAdi",
-                      "Apollo Asistan için yüklenmiş olan bir eklentiyi silmenizi sağlar.", ".bdel foobar").add_userbot()
+                      "Apollo Asistan için yüklenmiş olan bir eklentiyi silmenizi sağlar.", ".bdel foobar")
 myCmdHelp.add_command("help", None,
-                      "Apollo Userbot hakkında bilgi öğrenmenizi sağlar.").add_userbot()
+                      "Apollo Userbot hakkında bilgi öğrenmenizi sağlar.")
 myCmdHelp.add_command("yardim", None,
-                      ".help komutunun kısayoludur.").add_userbot()
+                      ".help komutunun kısayoludur.")
+myCmdHelp.add_command("restart", None,
+                      "Botu yeniden başlatır.")
+myCmdHelp.add_userbot()

@@ -11,5 +11,6 @@ async def jsn_ver(client: Client, message: Message):
 
 myCmdHelp = CmdHelp(Path(__file__).stem)
 
-CmdHelp(Path(__file__).stem).add_command("json", None,
-                                         "Bir mesajı yanıtlayın ve onun ham halini alın.").add_userbot()
+myCmdHelp.add_command("json", None,
+                      "Bir mesajı yanıtlayın ve onun ham halini alın.")
+myCmdHelp.add_userbot()

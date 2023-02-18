@@ -7,7 +7,7 @@ from time import sleep
 DELAY = 0.6
 
 
-@Client.on_message(filters.regex("^Sa$") & filters.outgoing)
+@Client.on_message(filters.regex("^Sa$") & filters.me)
 async def selamunaleykum(client: Client, message: Message):
     sa_list = [
 
@@ -31,7 +31,7 @@ async def selamunaleykum(client: Client, message: Message):
         sleep(DELAY)
 
 
-@Client.on_message(filters.regex("^As$") & filters.outgoing)
+@Client.on_message(filters.regex("^As$") & filters.me)
 async def aleykumselam(client: Client, message: Message):
     as_list = [
 
@@ -57,6 +57,7 @@ async def aleykumselam(client: Client, message: Message):
 myCmdHelp = CmdHelp(Path(__file__).stem)
 
 myCmdHelp.add_command("Sa", None,
-                      "Havalı bir şekilde Selamün aleyküm yazar.", is_cmd=False).add_userbot()
+                      "Havalı bir şekilde Selamün aleyküm yazar.", is_cmd=False)
 myCmdHelp.add_command("As", None,
-                      "Havalı bir şekilde Aleyküm Selam yazar.", is_cmd=False).add_userbot()
+                      "Havalı bir şekilde Aleyküm Selam yazar.", is_cmd=False)
+myCmdHelp.add_userbot()

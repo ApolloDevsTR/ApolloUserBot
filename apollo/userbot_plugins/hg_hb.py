@@ -7,7 +7,7 @@ from time import sleep
 DELAY = 0.6
 
 
-@Client.on_message(filters.regex("^Hg$") & filters.outgoing)
+@Client.on_message(filters.regex("^Hg$") & filters.me)
 async def hosgeldin(client: Client, message: Message):
     hg_list = [
         "**Hoşgeldiniiiiz!**",
@@ -26,7 +26,7 @@ async def hosgeldin(client: Client, message: Message):
         sleep(DELAY)
 
 
-@Client.on_message(filters.regex("^Hb$") & filters.outgoing)
+@Client.on_message(filters.regex("^Hb$") & filters.me)
 async def hosbuldum(client: Client, message: Message):
     hb_list = [
         "**Hoşşbulldumm 😊**",
@@ -47,6 +47,7 @@ async def hosbuldum(client: Client, message: Message):
 myCmdHelp = CmdHelp(Path(__file__).stem)
 
 myCmdHelp.add_command("Hg", None,
-                      "Havalı bir şekilde Hoş geldin yazar.", is_cmd=False).add_userbot()
+                      "Havalı bir şekilde Hoş geldin yazar.", is_cmd=False)
 myCmdHelp.add_command("Hb", None,
-                      "Havalı bir şekilde Hoş buldum yazar.", is_cmd=False).add_userbot()
+                      "Havalı bir şekilde Hoş buldum yazar.", is_cmd=False)
+myCmdHelp.add_userbot()

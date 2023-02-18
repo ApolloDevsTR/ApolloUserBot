@@ -7,6 +7,7 @@ from apollo.lib.eklentiler import userbot_eklentileri, bot_eklentileri
 from pyrogram.errors import FloodWait
 import logging
 import os, sys
+import os.path
 
 logging.getLogger("pyrogram.syncer").setLevel(
     logging.ERROR
@@ -73,7 +74,6 @@ def start():
         NO_ASISTAN = True
     toplam_plugin_sayisi = len(userbot_eklentileri(True)) + len(bot_eklentileri(True))
     logging.info(f"ApolloUserBot 🚀 Python {PYTHON_VER} sürümünde Pyrogram {PYRO_VER} tabanında toplam {toplam_plugin_sayisi} eklentiyle çalışıyor...\n")
-
     idle()
 
     UserBot.stop()
