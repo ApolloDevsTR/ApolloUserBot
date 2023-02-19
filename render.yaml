@@ -6,7 +6,6 @@ services:
     region: singapore 
     plan: free
     branch: main
-    rootDir: /
     healthCheckPath: /
     envVars:
       - key: API_ID 
