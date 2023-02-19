@@ -69,7 +69,6 @@ async def guncelle(client: Client, message: Message):
         repo.heads.main.checkout(True)
 
     ac_br = repo.active_branch.name
-    """
     if ac_br == 'dev':
         await message.edit("**[UPDATER]:**` Sanırım Apollo UserBot'un `dev` yani geliştirme branchını kullanıyorsun ve bu branch pek sağlıklı çalışmayabilir lütfen `main` branchına geçiniz.")
         repo.__del__()
@@ -78,7 +77,6 @@ async def guncelle(client: Client, message: Message):
         await message.edit("**[UPDATER]:**` Sanırım Apollo UserBot'u modifiye ettin ve `main`'den farklı bir branch kullanıyorsun.\nBu durum güncelleyicinin kafasını karıştırıyor.\nMadem botu modifiye ettin bunu düzeltmeyi de biliyorsundur. İyi şanslar :)")
         repo.__del__()
         return
-    """
 
     try:
         repo.create_remote('upstream', REPO_URL)
