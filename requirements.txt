@@ -1,3 +1,5 @@
+flask
+flask_restful
 python-dotenv
 pyrogram
 tgcrypto

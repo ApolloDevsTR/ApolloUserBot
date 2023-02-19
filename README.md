@@ -15,9 +15,7 @@
 ----
 ## Kurulum
 
-**Bot ile Kurulum** (Tavsiye edilen)
-
-[Bot'a ulaşmak için tıkla](https://t.me/apolloinstallerbot)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/ApolloDevsTR/ApolloUserBot)
 
 **Evde fazladan PC'im var & 7/24 çalışan sunucum var:**
 Eğer kendiniz hostlamak istiyorsanız aşağıdaki komutları çalıştırarak kurabilirsininiz.
