@@ -15,11 +15,9 @@ services:
       - key: BOT_TOKEN 
         sync: false
       - key: PREFIX 
-        sync: false
         value: .
       - key: STRING_SESSION
         sync: false
       - key: DOWNLOADS_DIR
-        sync: false
         value: downloads/
     autoDeploy: false
