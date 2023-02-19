@@ -5,6 +5,9 @@ from pyrogram import __version__ as PYRO_VER
 from dotenv import load_dotenv
 from apollo.lib.eklentiler import userbot_eklentileri, bot_eklentileri
 from pyrogram.errors import FloodWait
+import threading
+from flask import Flask
+from flask_restful import Resource, Api
 import logging
 import os, sys
 import os.path
@@ -14,6 +17,16 @@ logging.getLogger("pyrogram.syncer").setLevel(
 )  # turn off pyrogram logging
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 logging.basicConfig(level=logging.INFO)
+# healthcheck server for render.com
+app = Flask(__name__)
+api = Api(app)
+
+class Greeting (Resource):
+    def get(self):
+        return "Apollo UserBot calisiyor!"
+
+api.add_resource(Greeting, '/')
+threading.Thread(target=lambda: app.run(host="0.0.0.0", port=os.environ.get("PORT", 8080))).start()
 
 PYTHON_VER = f"{str(sys.version_info[0])}.{str(sys.version_info[1])}"
 VERSION = "beta"
