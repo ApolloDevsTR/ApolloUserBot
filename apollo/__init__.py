@@ -63,6 +63,10 @@ except ValueError:
     quit(1)
 
 CMD_HELP = {}
+TEMP_GLOBAL = {
+    "isafk": False,
+    "afkmsg": None
+}
 CMD_HELP_BOT = {}
 
 def start():
