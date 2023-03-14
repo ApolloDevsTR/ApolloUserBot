@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  worker:
+    build: .
+    environment:
+      DOWNLOADS_DIR: $DOWNLOADS_DIR # Defaults to downloads/
+      STRING_SESSION: $STRING_SESSION
+      API_ID: $API_ID
+      API_HASH: $API_HASH
+      PREFIX: $PREFIX  # defaults to .
+      BOT_TOKEN: $BOT_TOKEN # Not mandatory
